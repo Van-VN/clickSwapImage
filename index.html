@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .imageBoard {
+        margin: 75px 0 0 75px;
+        width: 1000px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <article id="imageBoard" class="imageBoard">
+      <img id="img0" src=" " onclick="changeIMG(0)" />
+      <img id="img1" src=" " onclick="changeIMG(1)" />
+      <img id="img2" src=" " onclick="changeIMG(2)" />
+      <img id="img3" src=" " onclick="changeIMG(3)" />
+      <img id="img4" src=" " onclick="changeIMG(4)" />
+    </article>
+  </body>
+</html>
+<script>
+  let arr = [
+    [
+      "IMG/CatA1.jpg",
+      "IMG/CatB1.jpg",
+      "IMG/CatC1.jpg",
+      "IMG/CatD1.jpg",
+      "IMG/CatE1.jpg",
+    ],
+    [
+      "IMG/CatA2.jpg",
+      "IMG/CatB2.jpg",
+      "IMG/CatC2.jpg",
+      "IMG/CatD2.jpg",
+      "IMG/CatE2.jpg",
+    ],
+    [
+      "IMG/CatA3.jpg",
+      "IMG/CatB3.jpg",
+      "IMG/CatC3.jpg",
+      "IMG/CatD3.jpg",
+      "IMG/CatE3.jpg",
+    ],
+    [
+      "IMG/CatA4.jpg",
+      "IMG/CatB4.jpg",
+      "IMG/CatC4.jpg",
+      "IMG/CatD4.jpg",
+      "IMG/CatE4.jpg",
+    ],
+    [
+      "IMG/CatA5.jpg",
+      "IMG/CatB5.jpg",
+      "IMG/CatC5.jpg",
+      "IMG/CatD5.jpg",
+      "IMG/CatE5.jpg",
+    ],
+  ];
+
+  function changeIMG(num) {
+    let rndNUm = Math.floor(Math.random() * 5);
+    document.getElementById(`img${num}`).src = arr[num][rndNUm];
+    document.getElementById(`img${num}`).value = arr[num][rndNUm];
+    checkWin();
+  }
+
+  function checkWin() {
+    for (let i = 0; i < 5; i++) {
+      console.log("checking", i);
+      if (
+        document.getElementById("img0").value === arr[0][i] &&
+        document.getElementById("img1").value === arr[1][i] &&
+        document.getElementById("img2").value === arr[2][i] &&
+        document.getElementById("img3").value === arr[3][i] &&
+        document.getElementById("img4").value === arr[4][i]
+      ) {
+        console.log("MATCHED!!!");
+        document.getElementById("imageBoard").style.boxShadow =
+          "rgba(226, 32, 32, 0.56) 0px 22px 70px 4px";
+        break;
+      } else {
+        // console.log("lll");
+        document.getElementById("imageBoard").style.boxShadow =
+          "rgba(31, 31, 31, 0.56) 0px 22px 70px 4px";
+      }
+    }
+  }
+
+  function randomImage() {
+    for (let i = 0; i <= 5; i++) {
+      changeIMG(i);
+    }
+  }
+  randomImage();
+</script>
